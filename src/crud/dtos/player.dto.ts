@@ -14,6 +14,15 @@ export class CreatePlayerDto {
   name: string;
 
   @ApiProperty({
+    example: 'Password!',
+    description: 'Player password',
+  })
+  @IsNotEmpty()
+  @IsString()
+  @Type(() => String)
+  password: string;
+  
+  @ApiProperty({
     example: 1,
     description: 'ID of the team the player belongs to',
     required: false,

@@ -8,8 +8,12 @@ import { Entities } from './entities';
     {
         imports: [
             TypeOrmModule.forRoot({
-                type: 'sqlite',
-                database: 'tournament.db',
+                type: 'mariadb',
+                host: 'mariadb',
+                port: 3306,
+                username: 'root',
+                password: 'example',
+                database: 'tournament',
                 entities: Entities,
                 synchronize: true,
             }),
