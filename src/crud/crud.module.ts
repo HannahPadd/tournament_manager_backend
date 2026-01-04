@@ -9,7 +9,7 @@ import { Entities } from './entities';
         imports: [
             TypeOrmModule.forRoot({
                 type: 'mariadb',
-                host: '127.0.0.1',
+                host: 'mariadb',
                 port: 3306,
                 username: 'root',
                 password: 'example',
