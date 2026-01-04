@@ -4,16 +4,17 @@ import { Controllers } from './controllers';
 import { Services } from './services';
 import { Entities } from './entities';
 
+
 @Module(
     {
         imports: [
             TypeOrmModule.forRoot({
                 type: 'mariadb',
-                host: 'mariadb',
+                host: process.env.DATABASE_URL,
                 port: 3306,
-                username: 'root',
-                password: 'example',
-                database: 'tournament',
+                username: process.env.USERNAME,
+                password: process.env.PASSWORD,
+                database: process.env.DATABASE,
                 entities: Entities,
                 synchronize: true,
             }),

@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { BackwardCompatibilityController } from './backwardcompatibility.controller';
 import { MatchManager } from './services/match.manager';
 import { StandingManager } from './services/standing.manager';
@@ -11,7 +12,13 @@ import { LiveScoreGateway } from './gateways/live.score.gateway'
 import { CrudModule } from './crud/crud.module';
 
 @Module({
-  imports: [ CrudModule ],
+  imports: [ 
+    CrudModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
+    }),
+   ],
   controllers:[
     BackwardCompatibilityController
   ],

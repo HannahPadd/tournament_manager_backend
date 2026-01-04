@@ -6,14 +6,23 @@ import { MatchAssignment } from './match_assignment.entity';
 
 @Entity()
 export class Player {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
   name: string;
 
+  @Column()
+  email: string;
+
   @Column({ default: "" })
   password: string;
+
+  @Column()
+  country: string
+
+  @Column({ default: ""})
+  groovestatsApi: string;
 
   @OneToMany(() => Score, (score) => score.player, { cascade: true })
   scores: Score[]

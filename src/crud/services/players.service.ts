@@ -12,10 +12,14 @@ export class PlayerService {
     @InjectRepository(Team)
     private teamsRepo: Repository<Team>
   ) { }
-
+  /*TODO
+  Avoid double registrations */
   async create(dto: CreatePlayerDto) {
     const player = new Player();
     player.name = dto.name;
+    player.email = dto.email;
+    player.password = dto.password;
+    player.groovestatsApi = dto.groovestatsApi;
 
     if (dto.teamId) {
       const team = await this.teamsRepo.findOneBy({ id: dto.teamId });
