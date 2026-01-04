@@ -3,6 +3,7 @@ import { Score } from './score.entity'
 import { Team } from './team.entity'
 import { Match } from './match.entity';
 import { MatchAssignment } from './match_assignment.entity';
+import { Bracket } from './bracket.entity';
 
 @Entity()
 export class Player {
@@ -24,5 +25,8 @@ export class Player {
 
   @OneToMany(() => MatchAssignment, (matchAssignment) => matchAssignment.player, { eager: true })
   matchAssignments: MatchAssignment[];
+
+  @ManyToOne(() => Bracket, (bracket) => bracket.player)
+  bracket: Bracket
 }
 
