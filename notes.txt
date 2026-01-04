@@ -1,0 +1,10 @@
+GET:
+tournament->division->phase->match
+
+for stream I would do Get current match then it sends the current match back
+
+
+
+Match gateway
+:q
+

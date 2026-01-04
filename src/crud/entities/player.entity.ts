@@ -30,6 +30,7 @@ export class Player {
   matchAssignments: MatchAssignment[];
 
   @ManyToOne(() => Bracket, (bracket) => bracket.player)
+  @JoinColumn()
   bracket: Bracket
 }
 

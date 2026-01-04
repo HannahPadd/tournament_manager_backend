@@ -25,5 +25,6 @@ export class Round {
   matchAssignments: MatchAssignment[];
 
   @ManyToOne(() => Bracket, (bracket) => bracket.round)
+  @JoinColumn()
   bracket: Bracket
 }

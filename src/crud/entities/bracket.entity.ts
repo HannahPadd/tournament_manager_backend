@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { Round } from './round.entity';
 import { Player } from './player.entity';
 import { Match } from './match.entity';
@@ -15,11 +15,11 @@ export class Bracket {
     bracketTypeId: number;
 
     @OneToMany(() => Round, (round) => round.bracket)
-    round: Round;
+    round: Round[];
 
     @OneToMany(() => Player, (player) => player.bracket)
-    player: Player;
+    player: Player[];
 
     @OneToMany(() => Match, (match) => match.bracket)
-    match: Match;
+    match: Match[];
 }

@@ -10,6 +10,7 @@ import { SongService } from './services/songs.service';
 import { StandingsService } from './services/standing.service';
 import { SetupService } from './services/setup.service';
 import { MatchAssignmentService } from './services/match_assignment.service';
+import { StreamViewService } from './services/streamview.service';
 
 export { DivisionsService }
 export { MatchesService }
@@ -23,6 +24,7 @@ export { SongService }
 export { StandingsService }
 export { SetupService }
 export { MatchAssignmentService }
+export { StreamViewService }
 
 export const Services = [
     DivisionsService,
@@ -36,5 +38,6 @@ export const Services = [
     TeamsService,
     TournamentsService,
     SetupService,
-    MatchAssignmentService
+    MatchAssignmentService,
+    StreamViewService
   ]
