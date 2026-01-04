@@ -18,7 +18,7 @@ export class StreamViewController {
             const streamView = new StreamView()
 
             streamView.playerPictureUrl = "";
-            streamView.playerName = "";
+            streamView.playerName = player.name// === null ? player.name : "Player name not found (this is a bug and should be fixed)";;
             streamView.playedFor = "";
             streamView. country = "";
             streamView.highestStaminaPass = 0;
@@ -47,23 +47,24 @@ export class StreamViewController {
         //TODO: Add all fields to player profile
             const streamView = new StreamView()
 
-            streamView.playerPictureUrl = "";
-            streamView.playerName = "";
-            streamView.playedFor = "";
-            streamView. country = "";
-            streamView.highestStaminaPass = 0;
-            streamView.staminaLevel = 0;
-            streamView.footSpeedLevel = 0;
-            streamView.crossOverTechLevel = 0;
-            streamView.sideSwitchTechLevel = 0;
-            streamView.bracketTechLevel = 0;
-            streamView.doubleStepTechLevel = 0;
-            streamView.jackTechLevel = 0;
-            streamView.xmodTechLevel = 0;
-            streamView.burstTechLevel = 0;
-            streamView.rhythmsTechLevel = 0;
+        streamView.playerPictureUrl = "";
+        streamView.playerName = player.name// === null ? player.name : "Player name not found (this is a bug and should be fixed)";
+        streamView.playedFor = "";
+        streamView. country = "";
+        streamView.highestStaminaPass = 0;
+        streamView.staminaLevel = 0;
+        streamView.footSpeedLevel = 0;
+        streamView.crossOverTechLevel = 0;
+        streamView.sideSwitchTechLevel = 0;
+        streamView.bracketTechLevel = 0;
+        streamView.doubleStepTechLevel = 0;
+        streamView.jackTechLevel = 0;
+        streamView.xmodTechLevel = 0;
+        streamView.burstTechLevel = 0;
+        streamView.rhythmsTechLevel = 0;
 
         return streamView;
+
     }
     
     //Get Player
