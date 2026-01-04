@@ -13,6 +13,9 @@ export class Player {
   @Column()
   name: string;
 
+  @Column({ default: "" })
+  password: string;
+
   @OneToMany(() => Score, (score) => score.player, { cascade: true })
   scores: Score[]
 
