@@ -17,21 +17,21 @@ export class StreamViewController {
         (await players).forEach((player: Player) => {
             const streamView = new StreamView()
 
-            streamView.playerPictureUrl = "";
-            streamView.playerName = player.name// === null ? player.name : "Player name not found (this is a bug and should be fixed)";;
-            streamView.playedFor = "";
-            streamView. country = "";
-            streamView.highestStaminaPass = 0;
-            streamView.staminaLevel = 0;
-            streamView.footSpeedLevel = 0;
-            streamView.crossOverTechLevel = 0;
-            streamView.sideSwitchTechLevel = 0;
-            streamView.bracketTechLevel = 0;
-            streamView.doubleStepTechLevel = 0;
-            streamView.jackTechLevel = 0;
-            streamView.xmodTechLevel = 0;
-            streamView.burstTechLevel = 0;
-            streamView.rhythmsTechLevel = 0;
+            streamView.playerPictureUrl = player.playerPictureUrl;
+            streamView.playerName = player.playerName// === null ? player.name : "Player name not found (this is a bug and should be fixed)";;
+            streamView.playedFor = player.playedFor;
+            streamView. country = player.country;
+            streamView.highestStaminaPass = player.highestStaminaPass;
+            streamView.staminaLevel = player.statminaLevel;
+            streamView.footSpeedLevel = player.footSpeedLevel;
+            streamView.crossOverTechLevel = player.crossOverTechLevel;
+            streamView.sideSwitchTechLevel = player.sideSwitchTechLevel;
+            streamView.bracketTechLevel = player.bracketTechLevel;
+            streamView.doubleStepTechLevel = player.doubleStepTechLevel;
+            streamView.jackTechLevel = player.jackTechLevel;
+            streamView.xmodTechLevel = player.xmodTechLevel;
+            streamView.burstTechLevel = player.burstTechLeven;
+            streamView.rhythmsTechLevel = player.rhythmsTechLevel;
 
             streamViewList.push(streamView);
         });
@@ -47,21 +47,21 @@ export class StreamViewController {
         //TODO: Add all fields to player profile
             const streamView = new StreamView()
 
-        streamView.playerPictureUrl = "";
-        streamView.playerName = player.name// === null ? player.name : "Player name not found (this is a bug and should be fixed)";
-        streamView.playedFor = "";
-        streamView. country = "";
-        streamView.highestStaminaPass = 0;
-        streamView.staminaLevel = 0;
-        streamView.footSpeedLevel = 0;
-        streamView.crossOverTechLevel = 0;
-        streamView.sideSwitchTechLevel = 0;
-        streamView.bracketTechLevel = 0;
-        streamView.doubleStepTechLevel = 0;
-        streamView.jackTechLevel = 0;
-        streamView.xmodTechLevel = 0;
-        streamView.burstTechLevel = 0;
-        streamView.rhythmsTechLevel = 0;
+        streamView.playerPictureUrl = player.playerPictureUrl;
+        streamView.playerName = player.playerName// === null ? player.name : "Player name not found (this is a bug and should be fixed)";;
+        streamView.playedFor = player.playedFor;
+        streamView. country = player.country;
+        streamView.highestStaminaPass = player.highestStaminaPass;
+        streamView.staminaLevel = player.statminaLevel;
+        streamView.footSpeedLevel = player.footSpeedLevel;
+        streamView.crossOverTechLevel = player.crossOverTechLevel;
+        streamView.sideSwitchTechLevel = player.sideSwitchTechLevel;
+        streamView.bracketTechLevel = player.bracketTechLevel;
+        streamView.doubleStepTechLevel = player.doubleStepTechLevel;
+        streamView.jackTechLevel = player.jackTechLevel;
+        streamView.xmodTechLevel = player.xmodTechLevel;
+        streamView.burstTechLevel = player.burstTechLeven;
+        streamView.rhythmsTechLevel = player.rhythmsTechLevel;
 
         return streamView;
 

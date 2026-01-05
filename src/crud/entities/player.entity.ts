@@ -11,10 +11,52 @@ export class Player {
   id: number;
 
   @Column()
-  name: string;
+  playerPictureUrl: string;
 
-  @Column({ default: "" })
-  password: string;
+  @Column()
+  playerName: string;
+
+  @Column()
+  playedFor: string;
+
+  @Column()
+  country: string;
+
+  @Column()
+  highestStaminaPass: number;
+
+  @Column()
+  statminaLevel: number;
+
+  @Column()
+  footSpeedLevel: number;
+
+  @Column()
+  crossOverTechLevel: number;
+
+  @Column()
+  footSwitchTechLevel: number;
+
+  @Column()
+  sideSwitchTechLevel: number;
+
+  @Column()
+  bracketTechLevel: number;
+
+  @Column()
+  doubleStepTechLevel: number;
+
+  @Column()
+  jackTechLevel: number;
+
+  @Column()
+  xmodTechLevel: number;
+
+  @Column()
+  burstTechLeven: number;
+
+  @Column()
+  rhythmsTechLevel: number;
 
   @OneToMany(() => Score, (score) => score.player, { cascade: true })
   scores: Score[]
