@@ -10,6 +10,7 @@ import { CreateTeamDto, UpdateTeamDto } from './dtos/team.dto';
 import { CreateTournamentDto, UpdateTournamentDto } from './dtos/tournament.dto';
 import { CreateMatchAssignmentDto, UpdateMatchAssignmentDto } from './dtos/match_assignment.dto';
 import { CreateSetupDto, UpdateSetupDto } from './dtos/setup.dto';
+import { CreateAccountDto, UpdateAcountDto  } from './dtos/acount.dto'
 
 export { CreateDivisionDto, UpdateDivisionDto };
 export { CreateMatchDto, UpdateMatchDto };
@@ -23,3 +24,4 @@ export { CreateTeamDto, UpdateTeamDto };
 export { CreateTournamentDto, UpdateTournamentDto };
 export { CreateMatchAssignmentDto, UpdateMatchAssignmentDto };
 export { CreateSetupDto, UpdateSetupDto };
+export { CreateAccountDto, UpdateAcountDto };

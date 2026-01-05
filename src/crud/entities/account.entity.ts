@@ -9,7 +9,7 @@ import { Team } from './team.entity';
 import { Bracket } from './bracket.entity';
 
 @Entity()
-export class Acount {
+export class Account {
     @PrimaryGeneratedColumn()
     id: number;
 

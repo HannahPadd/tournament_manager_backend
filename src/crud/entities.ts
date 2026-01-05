@@ -11,6 +11,7 @@ import { Standing } from './entities/standing.entity';
 import { MatchAssignment } from './entities/match_assignment.entity';
 import { Setup } from './entities/setup.entity';
 import { Bracket } from './entities/bracket.entity';
+import { Account } from './entities/account.entity';
 
 export { Division }
 export { Match }
@@ -25,6 +26,7 @@ export { Standing }
 export { MatchAssignment }
 export { Setup }
 export { Bracket }
+export { Account }
 
 export const Entities = [
     Division,
@@ -39,5 +41,6 @@ export const Entities = [
     Standing,
     MatchAssignment,
     Setup,
-    Bracket
+    Bracket,
+    Account
 ];

@@ -11,6 +11,7 @@ import { StandingsController } from './controllers/standings.controller';
 import { SetupController } from './controllers/setup.controller';
 import { MatchAssignmentController } from './controllers/match_assignment.controller';
 import { StreamViewController } from './controllers/streamview.controller';
+import { AccountController } from './controllers/account.controller';
 
 export const Controllers = [
     DivisionsController,
@@ -28,5 +29,6 @@ export const Controllers = [
     StandingsController,
     SetupController,
     MatchAssignmentController,
-    StreamViewController
+    StreamViewController,
+    AccountController
 ];

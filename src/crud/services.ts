@@ -11,6 +11,7 @@ import { StandingsService } from './services/standing.service';
 import { SetupService } from './services/setup.service';
 import { MatchAssignmentService } from './services/match_assignment.service';
 import { StreamViewService } from './services/streamview.service';
+import { AccountService } from './services/account.service';
 
 export { DivisionsService }
 export { MatchesService }
@@ -25,6 +26,7 @@ export { StandingsService }
 export { SetupService }
 export { MatchAssignmentService }
 export { StreamViewService }
+export { AccountService }
 
 export const Services = [
     DivisionsService,
@@ -39,5 +41,6 @@ export const Services = [
     TournamentsService,
     SetupService,
     MatchAssignmentService,
-    StreamViewService
+    StreamViewService,
+    AccountService
   ]

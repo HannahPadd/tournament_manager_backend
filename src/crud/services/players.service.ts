@@ -15,7 +15,7 @@ export class PlayerService {
 
   async create(dto: CreatePlayerDto) {
     const player = new Player();
-    player.playerName = dto.name;
+    player.playerName = dto.playerName;
 
     if (dto.teamId) {
       const team = await this.teamsRepo.findOneBy({ id: dto.teamId });
