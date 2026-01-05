@@ -1,68 +1,69 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany, JoinColumn, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany, JoinColumn, JoinTable, OneToOne } from 'typeorm';
 import { Score } from './score.entity'
 import { Team } from './team.entity'
 import { Match } from './match.entity';
 import { MatchAssignment } from './match_assignment.entity';
 import { Bracket } from './bracket.entity';
+import { Account } from './account.entity';
 
 @Entity()
 export class Player {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: "" })
   playerPictureUrl: string;
 
   @Column()
   playerName: string;
 
-  @Column()
+  @Column({ default: "" })
   playedFor: string;
 
-  @Column()
+  @Column({ default: "No country specified"} )
   country: string;
 
-  @Column()
+  @Column({ default: -1 })
   highestStaminaPass: number;
 
-  @Column()
+  @Column({ default: -1 })
   statminaLevel: number;
 
-  @Column()
+  @Column({ default : -1 })
   footSpeedLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   crossOverTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   footSwitchTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   sideSwitchTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   bracketTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   doubleStepTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   jackTechLevel: number;
 
-  @Column()
+  @Column({ default: -1})
   xmodTechLevel: number;
 
-  @Column()
-  burstTechLeven: number;
+  @Column({ default: -1})
+  burstTechLevel: number;
 
-  @Column()
+  @Column({ default: -1 })
   rhythmsTechLevel: number;
 
   @Column({ default: ""})
   groovestatsApi: string;
 
   @OneToMany(() => Score, (score) => score.player, { cascade: true })
-  scores: Score[]
+  scores: Score[];
 
   @ManyToOne(() => Team, (team) => team.players, { orphanedRowAction: "nullify" })
   @JoinColumn()
@@ -76,6 +77,6 @@ export class Player {
 
   @ManyToOne(() => Bracket, (bracket) => bracket.player)
   @JoinColumn()
-  bracket: Bracket
+  bracket: Bracket;
 }
 

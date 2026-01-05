@@ -11,7 +11,7 @@ export class CreateAccountDto {
     @IsNotEmpty()
     @IsString()
     @Type(() => String)
-    userName: string;
+    username: string;
 
     @ApiProperty({
     example: 'example@example.com',
@@ -37,6 +37,7 @@ export class CreateAccountDto {
         required: false,
     })
     @IsNumber()
+    @IsOptional()
     @Type(() => Number)
     playerId: number;
 }

@@ -10,7 +10,7 @@ import { Bracket } from './bracket.entity';
 
 @Entity()
 export class Account {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
     @Column()
@@ -22,11 +22,11 @@ export class Account {
     @Column()
     password: string;
 
-    @Column()
+    @Column({ default: "" })
     grooveStatsApi: string;
 
     @OneToOne(() => Player)
     @JoinColumn()
-    Player: Player
+    player: Player
 
 }

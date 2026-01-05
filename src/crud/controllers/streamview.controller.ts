@@ -30,7 +30,7 @@ export class StreamViewController {
             streamView.doubleStepTechLevel = player.doubleStepTechLevel;
             streamView.jackTechLevel = player.jackTechLevel;
             streamView.xmodTechLevel = player.xmodTechLevel;
-            streamView.burstTechLevel = player.burstTechLeven;
+            streamView.burstTechLevel = player.burstTechLevel;
             streamView.rhythmsTechLevel = player.rhythmsTechLevel;
 
             streamViewList.push(streamView);
@@ -60,7 +60,7 @@ export class StreamViewController {
         streamView.doubleStepTechLevel = player.doubleStepTechLevel;
         streamView.jackTechLevel = player.jackTechLevel;
         streamView.xmodTechLevel = player.xmodTechLevel;
-        streamView.burstTechLevel = player.burstTechLeven;
+        streamView.burstTechLevel = player.burstTechLevel;
         streamView.rhythmsTechLevel = player.rhythmsTechLevel;
 
         return streamView;
