@@ -10,7 +10,7 @@ import { Entities } from './entities';
         imports: [
             TypeOrmModule.forRoot({
                 type: 'mariadb',
-                host: process.env.DATABASE_URL,
+                host: '127.0.0.1',
                 port: 3306,
                 username: process.env.USERNAME,
                 password: process.env.PASSWORD,

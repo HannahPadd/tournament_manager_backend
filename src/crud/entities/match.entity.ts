@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMan
 import { Round } from './round.entity'
 import { Phase } from './phase.entity'
 import { Player } from './player.entity'
+import { Bracket } from './bracket.entity';
 @Entity()
 export class Match {
   @PrimaryGeneratedColumn()
@@ -35,4 +36,7 @@ export class Match {
   @ManyToOne(() => Phase, (phase) => phase.matches, { onDelete: 'CASCADE' })
   @JoinColumn()
   phase: Promise<Phase>;
+
+  @ManyToOne(() => Bracket, (bracket) => bracket.match)
+  bracket: Bracket
 }

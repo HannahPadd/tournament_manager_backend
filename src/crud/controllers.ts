@@ -1,4 +1,4 @@
-import { DivisionsController } from './controllers/divisions.controller';
+import { DivisionsController } from './controllers/bracket.controller';
 import { MatchesController } from './controllers/matches.controller';
 import { PhasesController } from './controllers/phases.controller';
 import { PlayersController } from './controllers/players.controller';
@@ -10,6 +10,8 @@ import { SongsController } from './controllers/songs.controller';
 import { StandingsController } from './controllers/standings.controller';
 import { SetupController } from './controllers/setup.controller';
 import { MatchAssignmentController } from './controllers/match_assignment.controller';
+import { StreamViewController } from './controllers/streamview.controller';
+import { AccountController } from './controllers/account.controller';
 
 export const Controllers = [
     DivisionsController,
@@ -26,5 +28,7 @@ export const Controllers = [
     SongsController,
     StandingsController,
     SetupController,
-    MatchAssignmentController
+    MatchAssignmentController,
+    StreamViewController,
+    AccountController
 ];

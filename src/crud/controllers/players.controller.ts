@@ -12,6 +12,9 @@ export class PlayersController {
         return await this.service.create(dto);
     }
 
+    //@Post('login')
+    //async 
+
     @Get()
     async findAll(): Promise<Player[]> {
         return await this.service.findAll();

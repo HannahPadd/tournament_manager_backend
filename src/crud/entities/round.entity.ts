@@ -3,6 +3,7 @@ import { Match } from './match.entity'
 import { Standing } from './standing.entity'
 import { Song } from './song.entity'
 import { MatchAssignment } from './match_assignment.entity';
+import { Bracket } from './bracket.entity';
 
 @Entity()
 export class Round {
@@ -22,4 +23,8 @@ export class Round {
 
   @OneToMany(() => MatchAssignment, (matchAssignment) => matchAssignment.round, { eager: true })
   matchAssignments: MatchAssignment[];
+
+  @ManyToOne(() => Bracket, (bracket) => bracket.round)
+  @JoinColumn()
+  bracket: Bracket
 }

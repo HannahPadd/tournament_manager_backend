@@ -16,10 +16,7 @@ export class PlayerService {
   Avoid double registrations */
   async create(dto: CreatePlayerDto) {
     const player = new Player();
-    player.name = dto.name;
-    player.email = dto.email;
-    player.password = dto.password;
-    player.groovestatsApi = dto.groovestatsApi;
+    player.playerName = dto.playerName;
 
     if (dto.teamId) {
       const team = await this.teamsRepo.findOneBy({ id: dto.teamId });
@@ -44,8 +41,8 @@ export class PlayerService {
     return await this.playersRepo.findOneBy({ id });
   }
 
-  async findByName(name: string) {
-    return await this.playersRepo.findOneBy({ name });
+  async findByName(playerName: string) {
+    return await this.playersRepo.findOneBy({ playerName });
   }
 
   async update(id: number, dto: UpdatePlayerDto) {
