@@ -10,6 +10,8 @@ import { ScoringSystemProvider } from './services/IScoringSystem';
 import { GameGateway } from './gateways/game.gateway';
 import { LiveScoreGateway } from './gateways/live.score.gateway'
 import { CrudModule } from './crud/crud.module';
+import { AuthModule } from './auth/auth.module'
+import { AccountModule } from './account/account.module';
 
 @Module({
   imports: [ 
@@ -18,6 +20,8 @@ import { CrudModule } from './crud/crud.module';
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
     }),
+    AuthModule,
+    AccountModule
    ],
   controllers:[
     BackwardCompatibilityController

@@ -4,7 +4,7 @@ import { Entity,
         OneToMany,
         OneToOne,
         JoinColumn } from 'typeorm';
-import { Player } from './player.entity';
+import { Player } from '../entities';
 
 @Entity()
 export class Account {

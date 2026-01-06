@@ -2,8 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, Request, 
 import { AccountService } from '../services';
 import { Account } from '../entities';
 import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from '../dtos';
-import { AuthenticateUserDto } from '../dtos/credentials.dto';
-import { AuthGuard } from '../auth/auth.guard';
+import { AuthenticateUserDto } from '../dtos';
 
 @Controller('account')
 export class AccountController {
@@ -15,14 +14,9 @@ export class AccountController {
         return await this.service.create(dto);
     }
 
-    @Post('/login')
-    async login(@Body(new ValidationPipe()) credentials: AuthenticateUserDto) {
-        return await this.service.login(credentials);
-    }
-
-    @UseGuards(AuthGuard)
-    @Get('profile')
-    async getProfile(@Request() req) {
-        return req.user;
-    }
+    //@UseGuards(AuthGuard)
+    //@Get('profile')
+    //async getProfile(@Request() req) {
+    //    return req.user;
+    //}
 }

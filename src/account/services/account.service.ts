@@ -3,9 +3,11 @@ import { compare, genSalt, hash } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from "typeorm";
-import { Bracket, Player, Match, Round, Account, Score, Team } from '../entities';
-import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from '../dtos';
-import { AuthenticateUserDto } from '../dtos/credentials.dto';
+import { Bracket, Player, Match, Round, Account, Score, Team } from '../../crud/entities';
+import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from '../../crud/dtos';
+
+
+export type account = Account;
 
 @Injectable()
 export class AccountService {
@@ -61,17 +63,4 @@ export class AccountService {
         return account;
     }
 
-    async login(credentials: AuthenticateUserDto) : Promise<{ access_token: string }> {
-            const username = credentials.username;
-            const pass = credentials.password;
-            const user = await this.accountRepo.findOneBy({ username });
-            if (user?.password !== pass) {
-                throw new UnauthorizedException();
-            }
-            const payload = { sub: user.id, username: user.username };
-            return {
-                access_token: await this.jwtService.signAsync(payload),
-            };
-
-    }
 }
