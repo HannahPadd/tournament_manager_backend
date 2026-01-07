@@ -20,10 +20,7 @@ async login(signInDto: SignInDto) : Promise<{ access_token: string }> {
         const username = signInDto.username;
         const pass = signInDto.password;
         const user = await this.accountRepo.findOneBy({ username });
-        console.log(user?.password);
-        console.log(pass);
         const isMatch = await bcrypt.compare(pass, user?.password);
-        console.log(isMatch);
         if (!isMatch) {
             throw new UnauthorizedException();
         }
