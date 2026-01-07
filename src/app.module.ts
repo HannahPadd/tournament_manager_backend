@@ -1,16 +1,7 @@
 import { Module } from '@nestjs/common';
 import { Entities } from '@persistance/entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
-import { BackwardCompatibilityController } from './backwards-compat/backwardcompatibility.controller';
-import { MatchManager } from './match-manager/services/match.manager';
-import { StandingManager } from './match-manager/services/standing.manager';
-import { SongRoller } from './match-manager/services/song.roller';
-import { TournamentCache } from './match-manager/services/tournament.cache';
-import { MatchGateway } from './match-manager/gateways/match.gateway'
-import { ScoringSystemProvider } from './match-manager/services/IScoringSystem';
-import { GameGateway } from './match-manager/gateways/game.gateway';
-import { LiveScoreGateway } from './match-manager/gateways/live.score.gateway'
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
@@ -22,21 +13,23 @@ import { BackwardsCompatModule } from './backwards-compat/backwards-compat.modul
 
 @Module({
   imports: [
-TypeOrmModule.forRoot({
-    type: 'mariadb',
-    host: '127.0.0.1',
-    port: 3306,
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    entities: Entities,
-    synchronize: true,
+  ConfigModule.forRoot({
+  isGlobal: true,
+    }),
+  TypeOrmModule.forRootAsync({
+    inject: [ConfigService],
+    useFactory: (config: ConfigService) => ({
+      type: 'mariadb',
+      host: config.getOrThrow('DATABASE_HOST'),
+      port: 3306,
+      username: config.getOrThrow('DATABASE_USER'),
+      password: config.getOrThrow('DATABASE_PASSWORD'),
+      database: config.getOrThrow('DATABASE_NAME'),
+      entities: Entities,
+      synchronize: true,
+      })
     }),
     PersistanceModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
-    }),
     AuthModule,
     AccountModule,
     TournamentModule,

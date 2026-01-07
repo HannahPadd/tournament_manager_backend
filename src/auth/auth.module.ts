@@ -4,15 +4,18 @@ import { AuthController } from './controllers';
 import { AccountModule } from '../account/account.module';
 import { JwtModule } from '@nestjs/jwt';
 import { PersistanceModule } from '@persistance/persistance.module';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
     imports: [
         PersistanceModule,
         AccountModule,
-        JwtModule.register({
+        JwtModule.registerAsync({
             global: true,
-            secret: process.env.SECRET,
-            signOptions: { expiresIn: '60s'},
+            useFactory: (config: ConfigService) => ({
+                secret: process.env.JWT_SECRET,
+                signOptions: { expiresIn: '10m'},
+            }),
         }),
     ],
     providers: [AuthService],

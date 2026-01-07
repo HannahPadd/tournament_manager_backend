@@ -10,7 +10,6 @@ import { AuthGuard } from '../guards/auth.guard';
 export class AuthController {
     constructor(private readonly service: AuthService) { }
 
-
     @Post('login')
     async login(@Body(new ValidationPipe()) credentials: SignInDto) {
         return await this.service.login(credentials);
