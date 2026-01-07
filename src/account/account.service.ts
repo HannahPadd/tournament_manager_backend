@@ -3,8 +3,8 @@ import { compare, genSalt, hash } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from "typeorm";
-import { Bracket, Player, Match, Round, Account, Score, Team } from '@persistance/entities';
-import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from '../dtos';
+import { Account, Player } from "@persistance/entities";
+import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from './dtos';
 
 
 export type account = Account;

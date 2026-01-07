@@ -3,7 +3,7 @@ import { AccountService } from '../../account/services';
 import { AuthenticateUserDto } from '../dtos/credentials.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { Account } from '../entities';
+import { Account } from '@persistance/entities';
 import { Repository } from 'typeorm';
 
 

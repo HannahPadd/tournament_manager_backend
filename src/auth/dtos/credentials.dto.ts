@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Account } from '../entities';
+import { Account } from '@persistance/entities';
 
 export class AuthenticateUserDto {
     @ApiProperty({

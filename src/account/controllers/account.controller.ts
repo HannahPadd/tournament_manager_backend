@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, Request, ValidationPipe } from '@nestjs/common';
 import { AccountService } from '../services';
-import { Account } from '../entities';
+import { Account } from '@persistance/entities';
 import { CreateAccountPlayerDto, UpdateAccountPlayerDto } from '../dtos';
 import { AuthenticateUserDto } from '../dtos';
 

@@ -3,9 +3,12 @@ import { AuthService } from './services';
 import { AuthController } from './controllers';
 import { AccountModule } from '../account/account.module';
 import { JwtModule } from '@nestjs/jwt';
+import { PersistanceModule } from '@persistance/persistance.module';
 
 @Module({
-    imports: [forwardRef(() => AccountModule),
+    imports: [
+        PersistanceModule,
+        AccountModule,
         JwtModule.register({
             global: true,
             secret: process.env.SECRET,
