@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } fro
 import { DivisionsService } from '../services';
 import { Division } from '@persistance/entities';
 import { CreateDivisionDto, UpdateDivisionDto } from '../dtos';
+import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 
 @Controller('divisions')
 export class DivisionsController {
