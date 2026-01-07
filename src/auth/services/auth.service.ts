@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
-import { AccountService } from '../../account/services';
-import { AuthenticateUserDto } from '../dtos/credentials.dto';
+import * as bcrypt from 'bcrypt';
+import { SignInDto } from '../dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { Account } from '@persistance/entities';
@@ -16,11 +16,15 @@ export class AuthService {
     ) { }
 
     
-async login(credentials: AuthenticateUserDto) : Promise<{ access_token: string }> {
-        const username = credentials.username;
-        const pass = credentials.password;
+async login(signInDto: SignInDto) : Promise<{ access_token: string }> {
+        const username = signInDto.username;
+        const pass = signInDto.password;
         const user = await this.accountRepo.findOneBy({ username });
-        if (user?.password !== pass) {
+        console.log(user?.password);
+        console.log(pass);
+        const isMatch = await bcrypt.compare(pass, user?.password);
+        console.log(isMatch);
+        if (!isMatch) {
             throw new UnauthorizedException();
         }
         const payload = { sub: user.id, username: user.username };
