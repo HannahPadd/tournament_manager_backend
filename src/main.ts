@@ -15,12 +15,26 @@ async function bootstrap() {
     .build();
 
   app.enableCors({
-    origin: '*',
+    origin: 'http://manager.itgeurocup.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: false,
+    credentials: true,
+
   });
-  app.use(cors());
+
+  app.use(cors({
+  origin: (origin, callback) => {
+    const allowedOrigins = ["http://manager.itgeurocup.com"];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+    credentials: true
+  }));
+
+
 
   app.useWebSocketAdapter(new WsAdapter(app));
 
