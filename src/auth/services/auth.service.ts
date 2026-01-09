@@ -1,10 +1,14 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
-import * as bcrypt from 'bcrypt';
-import { SignInDto } from '../dtos';
-import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { Account } from '@persistance/entities';
+import { InjectRepository } from '@nestjs/typeorm';
+
 import { Repository } from 'typeorm';
+
+import * as bcrypt from 'bcrypt';
+
+import { AuthRefreshTokenDto } from '../dtos';
+
+import { Account } from '@persistence/entities';
 
 
 @Injectable()
@@ -16,11 +20,23 @@ export class AuthService {
     ) { }
 
     
-async login(signInDto: SignInDto) : Promise<{ access_token: string }> {
-        const username = signInDto.username;
-        const pass = signInDto.password;
+    async login(username: string, password: string) : Promise<{ access_token: string }> {
         const user = await this.accountRepo.findOneBy({ username });
-        const isMatch = await bcrypt.compare(pass, user?.password);
+        const isMatch = await bcrypt.compare(password, user?.password);
+        if (!isMatch) {
+            throw new UnauthorizedException();
+        }
+        const payload = { sub: user.id, username: user.username };
+        return {
+            access_token: await this.jwtService.signAsync(payload),
+        };
+    }
+
+    async getRefreshToken(authRefreshTokenDto: AuthRefreshTokenDto) : Promise<{ access_token: string}> {
+        console.log(authRefreshTokenDto.accessToken);
+        const refreshToken = authRefreshTokenDto.accessToken;
+        const user = await this.accountRepo.findOneBy({ refreshToken });
+        const isMatch = (refreshToken === user.refreshToken);
         if (!isMatch) {
             throw new UnauthorizedException();
         }
@@ -30,3 +46,4 @@ async login(signInDto: SignInDto) : Promise<{ access_token: string }> {
         };
     }
 }
+

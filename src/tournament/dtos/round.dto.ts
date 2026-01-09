@@ -1,7 +1,7 @@
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2556429189.
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
-import { Match, Song }  from '@persistance/entities';
+import { Match, Song }  from '@persistence/entities';
 
 export class CreateRoundDto {
   @ApiProperty({ description: 'The ID of the match this round belongs to' })

@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { ScoresService } from '../services';
 import { CreateScoreDto, UpdateScoreDto } from '../dtos';
-import { Score } from '@persistance/entities'
+import { Score } from '@persistence/entities'
 
 @Controller('scores')
 export class ScoresController {

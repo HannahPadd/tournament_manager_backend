@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { PhasesService } from '../services';
-import { Phase } from '@persistance/entities';
+import { Phase } from '@persistence/entities';
 import { CreatePhaseDto, UpdatePhaseDto } from '../dtos';
 
 @Controller('phases')

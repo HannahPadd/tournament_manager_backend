@@ -7,7 +7,7 @@ import {
   OnGatewayDisconnect,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { Match } from '@persistance/entities';
+import { Match } from '@persistence/entities';
 
 @WebSocketGateway({
   path: "/matchupdatehub",

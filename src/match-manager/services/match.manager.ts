@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { MatchesService, RoundsService } from '../../tournament/services';
 import { CreateRoundDto } from '../../tournament/dtos';
-import { Match } from '@persistance/entities';
+import { Match } from '@persistence/entities';
 import { SongRoller } from './song.roller';
 import { MatchGateway } from '../gateways/match.gateway';
 

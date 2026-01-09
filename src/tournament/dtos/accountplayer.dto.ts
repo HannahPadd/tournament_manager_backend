@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, IsOptional, } from 'class-validator';
 import { Type } from 'class-transformer';
-import { Bracket, Player, Score, Team }  from '@persistance/entities';
+import { Bracket, Player, Score, Team }  from '@persistence/entities';
 import { ApiProperty } from '@nestjs/swagger';
 import { PrimaryGeneratedColumn } from 'typeorm';
 

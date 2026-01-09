@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { TeamsService } from '../services';
 import { CreateTeamDto, UpdateTeamDto } from '../dtos';
-import { Team } from '@persistance/entities'
+import { Team } from '@persistence/entities'
 
 @Controller('teams')
 export class TeamsController {

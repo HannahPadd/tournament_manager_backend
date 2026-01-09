@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PersistanceModule } from '@persistance/persistance.module';
+import { PersistenceModule } from '@persistence/persistence.module';
 import { MatchesService, SongService } from '../tournament/services';
 import { RoundsService } from '../tournament/services';
 import { TournamentModule } from 'src/tournament/tournament.module';
@@ -11,7 +11,7 @@ import { DivisionsService } from '../tournament/services';
 
 @Module({
     imports: [
-        PersistanceModule,
+        PersistenceModule,
         TournamentModule
     ],
     providers: [

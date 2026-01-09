@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Player, Round, Setup } from '@persistance/entities';
+import { Player, Round, Setup } from '@persistence/entities';
 
 export class CreateMatchAssignmentDto {
   @ApiProperty({

@@ -1,23 +1,34 @@
-import { Body, Controller, ValidationPipe, Post, Get, Request, UseGuards } from '@nestjs/common';
-import { AuthService } from '../services';
-import { Account } from '@persistance/entities';
-import { SignInDto } from '../dtos';
-import { AuthGuard } from '../guards/auth.guard';
+import { 
+    Body,
+    Controller,
+    ValidationPipe, 
+    Post, 
+    Get, 
+    Request, 
+    UseGuards } from '@nestjs/common';
 
+import { AuthService } from '../services';
+import { AuthRefreshTokenDto } from '../dtos';
 
 
 @Controller('auth')
 export class AuthController {
     constructor(private readonly service: AuthService) { }
 
-    @Post('login')
-    async login(@Body(new ValidationPipe()) credentials: SignInDto) {
-        return await this.service.login(credentials);
+    @Post('auth/login')
+    async login(@Request() reg) {
+        return "req.user";
     }
 
-    @UseGuards(AuthGuard)
+
+    @UseGuards()
     @Get('profile')
     getProfile(@Request() req) {
         return req.user;
+    }
+
+    @Get('refresh')
+    async getRefreshToken(@Body(new ValidationPipe()) refreshToken: AuthRefreshTokenDto) {
+        return await this.service.getRefreshToken(refreshToken);
     }
 }

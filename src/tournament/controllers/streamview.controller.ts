@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { StreamViewService } from '../services';
-import { Player } from '@persistance/entities';
+import { Player } from '@persistence/entities';
 import { StreamView } from '../view/stream.view';
 
 

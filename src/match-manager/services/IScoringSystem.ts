@@ -1,4 +1,4 @@
-import { Standing } from "@persistance/entities";
+import { Standing } from "@persistence/entities";
 
 export class IScoringSystem {
     constructor() {

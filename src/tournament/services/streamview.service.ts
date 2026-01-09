@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Player, Bracket } from '@persistance/entities';
+import { Player, Bracket } from '@persistence/entities';
 
 @Injectable()
 export class StreamViewService {

@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { SetupService } from '../services';
-import {  Setup } from '@persistance/entities';
+import {  Setup } from '@persistence/entities';
 import { CreateSetupDto, UpdateSetupDto } from '../dtos';
 
 @Controller('divisions')

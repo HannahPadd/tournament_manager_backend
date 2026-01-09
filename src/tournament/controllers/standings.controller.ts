@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { StandingsService } from '../services';
 import { CreateStandingDto, UpdateStandingDto } from '../dtos';
-import { Standing } from '@persistance/entities'
+import { Standing } from '@persistence/entities'
 
 @Controller('standings')
 export class StandingsController {

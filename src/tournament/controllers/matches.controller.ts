@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { MatchesService } from '../services';
 import { CreateMatchDto, UpdateMatchDto } from '../dtos';
-import { Match } from '@persistance/entities';
+import { Match } from '@persistence/entities';
 
 @Controller('matches')
 export class MatchesController {

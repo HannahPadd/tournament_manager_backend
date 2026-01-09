@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, IsOptional, } from 'class-validator';
 import { Type } from 'class-transformer';
-import { Player, Team }  from '@persistance/entities';
+import { Player, Team }  from '@persistence/entities';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateAccountDto {

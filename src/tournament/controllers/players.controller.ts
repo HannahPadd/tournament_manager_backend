@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { PlayerService } from '../services';
 import { CreatePlayerDto, UpdatePlayerDto } from '../dtos';
-import { Player } from '@persistance/entities'
+import { Player } from '@persistence/entities'
 
 @Controller('players')
 export class PlayersController {

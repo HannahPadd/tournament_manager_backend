@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { DivisionsService, SongService } from '../../tournament/services';
-import { Division, Song } from '@persistance/entities';
+import { Division, Song } from '@persistence/entities';
 
 @Injectable()
 export class SongRoller {

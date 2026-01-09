@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { DivisionsService } from '../services';
-import { Division } from '@persistance/entities';
+import { Division } from '@persistence/entities';
 import { CreateDivisionDto, UpdateDivisionDto } from '../dtos';
 import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 

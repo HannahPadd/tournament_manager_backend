@@ -1,7 +1,7 @@
 
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { SongService } from '../services';
-import { Song } from '@persistance/entities';
+import { Song } from '@persistence/entities';
 import { CreateSongDto, UpdateSongDto } from '../dtos';
 
 @Controller('songs')

@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Param, Post, Body } from '@nestjs/common';
 import { DivisionsService, MatchesService, PhasesService, PlayerService, RoundsService, SongService } from '../tournament/services';
-import { Match, Phase, Player, Song, Standing } from '@persistance/entities';
+import { Match, Phase, Player, Song, Standing } from '@persistence/entities';
 import { TournamentCache } from 'src/match-manager/services/tournament.cache';
 import { CreateMatchDto, CreateScoreDto, UpdatePlayerDto, UpdateRoundDto, CreateSongDto, CreatePlayerDto } from '../tournament/dtos';
 import { MatchManager } from '../match-manager/services/match.manager';

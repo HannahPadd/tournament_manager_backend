@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Division, Tournament } from '@persistance/entities';
+import { Division, Tournament } from '@persistence/entities';
 import { CreateDivisionDto, UpdateDivisionDto } from '../dtos';
 
 @Injectable()

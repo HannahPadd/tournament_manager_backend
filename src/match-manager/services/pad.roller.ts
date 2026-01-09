@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateMatchAssignmentDto } from '../../tournament/dtos';
-import { Match, MatchAssignment, Setup } from '@persistance/entities';
+import { Match, MatchAssignment, Setup } from '@persistence/entities';
 import { MatchAssignmentService } from '../../tournament/services';
 import { Repository } from "typeorm";
 

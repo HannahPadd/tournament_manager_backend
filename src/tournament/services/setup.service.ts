@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Setup } from '@persistance/entities';
+import { Setup } from '@persistence/entities';
 import { CreateSetupDto, UpdateSetupDto } from '../dtos';
 
 @Injectable()

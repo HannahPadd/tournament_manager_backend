@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { Player, Phase } from '@persistance/entities';
+import { Player, Phase } from '@persistence/entities';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateMatchDto {

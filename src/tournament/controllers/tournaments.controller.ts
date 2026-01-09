@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { TournamentsService } from '../services';
-import { Tournament } from '@persistance/entities';
+import { Tournament } from '@persistence/entities';
 import { CreateTournamentDto, UpdateTournamentDto } from '../dtos';
 
 @Controller('tournaments')

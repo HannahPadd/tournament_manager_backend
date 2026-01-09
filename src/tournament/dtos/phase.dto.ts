@@ -5,7 +5,7 @@ import {
   IsInt,
   Min,
 } from 'class-validator';
-import { Division }  from '@persistance/entities';
+import { Division }  from '@persistence/entities';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePhaseDto {

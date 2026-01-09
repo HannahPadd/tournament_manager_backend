@@ -7,7 +7,7 @@ import {
   IsString,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { Match, Player, Round } from '@persistance/entities';
+import { Match, Player, Round } from '@persistence/entities';
 import { UsingJoinTableIsNotAllowedError } from 'typeorm';
 
 export class CreateBracketDto {

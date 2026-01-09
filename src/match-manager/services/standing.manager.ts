@@ -3,7 +3,7 @@ import { PlayerService, SongService, StandingsService, ScoresService } from '../
 import { LiveScore } from "../gateways/live.score.gateway"
 import { CreateScoreDto, CreateStandingDto, UpdateStandingDto } from '../../tournament/dtos';
 import { TournamentCache } from "./tournament.cache";
-import { Standing, Player, Round, Match } from '@persistance/entities';
+import { Standing, Player, Round, Match } from '@persistence/entities';
 import { MatchGateway } from '../gateways/match.gateway';
 import { ScoringSystemProvider } from './IScoringSystem'
 import * as path from 'path';

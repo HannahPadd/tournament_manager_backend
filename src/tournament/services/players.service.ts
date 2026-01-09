@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePlayerDto, UpdatePlayerDto } from '../dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Player, Team } from '@persistance/entities'
+import { Player, Team } from '@persistence/entities'
 
 @Injectable()
 export class PlayerService {

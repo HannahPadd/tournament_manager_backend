@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateStandingDto, UpdateStandingDto } from '../dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Standing, Round, Score } from '@persistance/entities'
+import { Standing, Round, Score } from '@persistence/entities'
 
 @Injectable()
 export class StandingsService {

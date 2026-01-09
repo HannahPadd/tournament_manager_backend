@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRoundDto, UpdateRoundDto } from '../dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Round, Match, Song } from '@persistance/entities'
+import { Round, Match, Song } from '@persistence/entities'
 
 @Injectable()
 export class RoundsService {

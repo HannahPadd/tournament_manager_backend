@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { RoundsService } from '../services';
 import { CreateRoundDto, UpdateRoundDto } from '../dtos';
-import { Round } from '@persistance/entities'
+import { Round } from '@persistence/entities'
 
 @Controller('rounds')
 export class RoundsController {

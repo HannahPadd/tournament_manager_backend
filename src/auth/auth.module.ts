@@ -1,15 +1,23 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { AuthService } from './services';
-import { AuthController } from './controllers';
-import { AccountModule } from '../account/account.module';
-import { JwtModule } from '@nestjs/jwt';
-import { PersistanceModule } from '@persistance/persistance.module';
+import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
+
+import { AuthController } from './controllers';
+import { RolesGuard } from './guards';
+import { AuthService } from './services';
+import { LocalStrategy } from './strategies';
+
+import { AccountModule } from '@user/user.module';
+import { PersistenceModule } from '@persistence/persistence.module';
+
 
 @Module({
     imports: [
-        PersistanceModule,
+        PersistenceModule,
         AccountModule,
+        PassportModule,
         JwtModule.registerAsync({
             global: true,
             useFactory: (config: ConfigService) => ({
@@ -18,7 +26,14 @@ import { ConfigService } from '@nestjs/config';
             }),
         }),
     ],
-    providers: [AuthService],
+    providers: [
+        {
+            provide: APP_GUARD,
+            useClass: RolesGuard
+        },
+        AuthService,
+        LocalStrategy
+    ],
     controllers: [AuthController],
 })
 export class AuthModule {}

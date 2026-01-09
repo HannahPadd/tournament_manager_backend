@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { MatchesService } from '../../tournament/services';
-import { Match } from '@persistance/entities';
+import { Match } from '@persistence/entities';
 import { MatchGateway } from '../gateways/match.gateway';
 @Injectable()
 export class TournamentCache {

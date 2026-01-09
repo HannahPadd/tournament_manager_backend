@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
-import { Entities } from '@persistance/entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AuthModule } from './auth/auth.module';
-import { AuthService } from './auth/auth.service';
-import { AuthController } from './auth/auth.controller';
-import { AccountModule } from './account/account.module';
-import { PersistanceModule } from './persistance/persistance.module';
-import { TournamentModule } from './tournament/tournament.module';
-import { MatchManagerModule } from './match-manager/match-manager.module';
-import { BackwardsCompatModule } from './backwards-compat/backwards-compat.module';
+
+import { AuthModule } from '@auth/auth.module';
+import { BackwardsCompatModule } from '@backwards-compat/backwards-compat.module';
+import { MatchManagerModule } from '@match-manager/match-manager.module';
+import { PersistenceModule } from '@persistence/persistence.module';
+import { TournamentModule } from '@tournament/tournament.module';
+import { AccountModule } from '@user/user.module';
+
+import { Entities } from '@persistence/entities';
+
+import { AuthService } from '@auth/services';
+import { AuthController } from '@auth/controllers';
+import { RolesGuard } from '@auth/guards';
 
 @Module({
   imports: [
@@ -29,7 +33,7 @@ import { BackwardsCompatModule } from './backwards-compat/backwards-compat.modul
       synchronize: true,
       })
     }),
-    PersistanceModule,
+    PersistenceModule,
     AuthModule,
     AccountModule,
     TournamentModule,
