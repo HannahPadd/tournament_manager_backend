@@ -15,8 +15,7 @@ export class UserService {
         @InjectRepository(Account)
         private accountRepo: Repository<Account>,
         @InjectRepository(Player)
-        private playerRepo: Repository<Player>,
-        private jwtService: JwtService
+        private playerRepo: Repository<Player>
     ) { }
 
     //TODO: Add user roles and authentication

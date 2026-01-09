@@ -44,7 +44,6 @@ import { AuthController } from '@auth/controllers';
     AuthController
   ],
   providers: [
-    AuthService
   ],
 })
 export class AppModule { }

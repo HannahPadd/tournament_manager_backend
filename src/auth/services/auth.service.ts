@@ -1,4 +1,5 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common'
+import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -9,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 import { AuthRefreshTokenDto } from '../dtos';
 
 import { Account } from '@persistence/entities';
+import refreshJwtConfig from '@auth/config/refresh.jwt.config';
 
 
 @Injectable()
@@ -16,7 +18,8 @@ export class AuthService {
     constructor(
         @InjectRepository(Account)
         private accountRepo: Repository<Account>,
-        private jwtService: JwtService
+        private jwtService: JwtService,
+        @Inject(refreshJwtConfig.KEY) private refreshTokenConfig:ConfigType<typeof refreshJwtConfig>
     ) { }
 
     
@@ -28,6 +31,18 @@ export class AuthService {
         }
         return user;
     }
+
+    async validateRefreshToken(username: string, refreshToken: string) {
+        const user = await this.accountRepo.findOneBy({ username });
+        if (!user || !user.refreshToken) return null;
+
+        const matches = await bcrypt.compare(
+            refreshToken,
+            user.refreshToken,
+        );
+
+        return matches ? user : null;
+        }
 
     async login(user: any) {
         const payload = {
@@ -42,18 +57,17 @@ export class AuthService {
         };
     }
 
-    async getRefreshToken(authRefreshTokenDto: AuthRefreshTokenDto) : Promise<{ access_token: string}> {
-        console.log(authRefreshTokenDto.accessToken);
-        const refreshToken = authRefreshTokenDto.accessToken;
-        const user = await this.accountRepo.findOneBy({ refreshToken });
-        const isMatch = (refreshToken === user.refreshToken);
-        if (!isMatch) {
-            throw new UnauthorizedException();
-        }
-        const payload = { sub: user.id, username: user.username };
-        return {
-            access_token: await this.jwtService.signAsync(payload),
-        };
+    async getTokens(userId: string, email: string) {
+        const payload = { sub: userId, email };
+
+        const [accessToken, refreshToken] = await Promise.all([
+            this.jwtService.signAsync(payload),
+            this.jwtService.signAsync(payload, this.refreshTokenConfig),
+        ]);
+
+        //await this.saveRefreshTokenHash(userId, refreshToken);
+
+        return { userId, accessToken, refreshToken };
     }
 }
 

@@ -14,6 +14,7 @@ import { Roles } from '../decorators';
 import { UserService } from '@user/services';
 import { CreateUserPlayerDto } from '@user/dtos';
 import { LocalAuthGuard, RolesGuard, JwtAuthGuard } from '@auth/guards';
+import { JwtRefreshGuard } from '@auth/guards/jwt-refresh.guard';
 
 
 @Controller('auth')
@@ -28,11 +29,24 @@ export class AuthController {
         return this.authService.login(req.user);
     }
 
+    /*
+    @Post('refresh')
+    @UseGuards(JwtRefreshGuard)
+    async refresh(@Req() req: any) {
+        return this.authService.getTokens(req.user);
+    }
+        */
+
     @UseGuards(LocalAuthGuard)
     @Post('logout')
     async logout(@Request() req) {
         return req.logout();
     }
+
+    //@Get('refresh')
+    //async getRefreshToken() {
+    //    return
+    //}
 
     @UseGuards(LocalAuthGuard, RolesGuard)
     @Post()
@@ -46,10 +60,5 @@ export class AuthController {
     getProfile(@Request() req) {
         console.log("getProfile")
         return req.user;
-    }
-
-    @Get('refresh')
-    async getRefreshToken(@Body(new ValidationPipe()) refreshToken: AuthRefreshTokenDto) {
-        return await this.authService.getRefreshToken(refreshToken);
     }
 }

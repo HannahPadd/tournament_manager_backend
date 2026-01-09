@@ -14,7 +14,8 @@ import { PersistenceModule } from '@persistence/persistence.module';
 @Module({
     imports: [
       PersistenceModule,
-      AccountModule,],
+      AccountModule,
+    ],
     providers: [UserService],
     controllers: [
       UserController

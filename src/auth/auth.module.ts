@@ -1,18 +1,21 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
 import { AuthController } from './controllers';
 import { LocalAuthGuard, RolesGuard } from './guards';
 import { AuthService } from './services';
-import { LocalStrategy } from './strategies';
+import { Strategies } from './strategies';
 
 import { AccountModule } from '@user/user.module';
 import { PersistenceModule } from '@persistence/persistence.module';
 
 import { JwtStrategy } from './strategies/jwt.strategy';
+
+import jwtConfig from './config/jwt.config';
+import refreshJwtConfig from './config/refresh.jwt.config';
 
 
 @Module({
@@ -20,27 +23,13 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         PersistenceModule,
         AccountModule,
         PassportModule,
-        JwtModule.registerAsync({
-            inject: [ConfigService],
-            global: true,
-            useFactory: (config: ConfigService) => ({
-                secret: config.get<string>('JWT_SECRET'),
-                signOptions: { expiresIn: '60s'},
-            }),
-        }),
+        JwtModule.registerAsync(jwtConfig.asProvider()),
+        ConfigModule.forFeature(jwtConfig),
+        ConfigModule.forFeature(refreshJwtConfig),
     ],
     providers: [
-        {
-            provide: APP_GUARD,
-            useClass: LocalAuthGuard
-        },
-        {
-            provide: APP_GUARD,
-            useClass: RolesGuard
-        },
         AuthService,
-        LocalStrategy,
-        JwtStrategy
+        ...Strategies
     ],
     controllers: [AuthController],
     exports: [AuthService]
