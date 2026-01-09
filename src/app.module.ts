@@ -13,7 +13,7 @@ import { Entities } from '@persistence/entities';
 
 import { AuthService } from '@auth/services';
 import { AuthController } from '@auth/controllers';
-import { RolesGuard } from '@auth/guards';
+
 
 @Module({
   imports: [

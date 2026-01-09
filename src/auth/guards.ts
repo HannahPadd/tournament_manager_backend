@@ -1,10 +1,13 @@
-import { AuthGuard } from "./guards/auth.guard";
+import { LocalAuthGuard } from "./guards/local-auth.guard";
 import { RolesGuard } from "./guards/roles.guard";
+import { JwtAuthGuard } from "./guards/jwt-auth.guard";
 
-export { AuthGuard };
+export { LocalAuthGuard };
 export { RolesGuard };
+export { JwtAuthGuard };
 
 export const Guards = [
-    AuthGuard,
-    RolesGuard
+    LocalAuthGuard,
+    RolesGuard,
+    JwtAuthGuard
 ]

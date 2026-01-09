@@ -20,13 +20,23 @@ export class AuthService {
     ) { }
 
     
-    async login(username: string, password: string) : Promise<{ access_token: string }> {
+    async validateUser(username: string, password: string) {
         const user = await this.accountRepo.findOneBy({ username });
         const isMatch = await bcrypt.compare(password, user?.password);
         if (!isMatch) {
             throw new UnauthorizedException();
         }
-        const payload = { sub: user.id, username: user.username };
+        return user;
+    }
+
+    async login(user: any) {
+        const payload = {
+            sub: user.id,
+            username: user.username,
+            //TODO: add roles
+            roles: [],
+        };
+
         return {
             access_token: await this.jwtService.signAsync(payload),
         };

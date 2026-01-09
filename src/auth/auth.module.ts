@@ -5,12 +5,14 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
 import { AuthController } from './controllers';
-import { RolesGuard } from './guards';
+import { LocalAuthGuard, RolesGuard } from './guards';
 import { AuthService } from './services';
 import { LocalStrategy } from './strategies';
 
 import { AccountModule } from '@user/user.module';
 import { PersistenceModule } from '@persistence/persistence.module';
+
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 
 @Module({
@@ -19,21 +21,28 @@ import { PersistenceModule } from '@persistence/persistence.module';
         AccountModule,
         PassportModule,
         JwtModule.registerAsync({
+            inject: [ConfigService],
             global: true,
             useFactory: (config: ConfigService) => ({
-                secret: process.env.JWT_SECRET,
-                signOptions: { expiresIn: '10m'},
+                secret: config.get<string>('JWT_SECRET'),
+                signOptions: { expiresIn: '60s'},
             }),
         }),
     ],
     providers: [
         {
             provide: APP_GUARD,
+            useClass: LocalAuthGuard
+        },
+        {
+            provide: APP_GUARD,
             useClass: RolesGuard
         },
         AuthService,
-        LocalStrategy
+        LocalStrategy,
+        JwtStrategy
     ],
     controllers: [AuthController],
+    exports: [AuthService]
 })
 export class AuthModule {}

@@ -6,7 +6,6 @@ import { WsAdapter } from '@nestjs/platform-ws';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalGuards(new RolesGuard());
 
   const config = new DocumentBuilder()
     .setTitle('API Documentation')
