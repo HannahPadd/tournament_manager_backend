@@ -41,7 +41,7 @@ export class AuthController {
         this.userService.create(createUserPlayerDto);
     }
 
-    @UseGuards(JwtAuthGuard)
+    //@UseGuards(JwtAuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
         console.log("getProfile")

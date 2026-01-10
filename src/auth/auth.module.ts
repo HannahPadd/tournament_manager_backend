@@ -30,14 +30,6 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         }),
     ],
     providers: [
-        {
-            provide: APP_GUARD,
-            useClass: LocalAuthGuard
-        },
-        {
-            provide: APP_GUARD,
-            useClass: RolesGuard
-        },
         AuthService,
         LocalStrategy,
         JwtStrategy

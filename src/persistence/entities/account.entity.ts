@@ -21,7 +21,7 @@ export class Account {
     @Column()
     password: string;
 
-    @Column()
+    @Column({ default: "" })
     refreshToken: string;
 
     @Column({ default: "" })
