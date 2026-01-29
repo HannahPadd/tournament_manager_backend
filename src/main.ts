@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as cors from 'cors';
+import { RolesGuard } from './auth/guards';
 import { WsAdapter } from '@nestjs/platform-ws';
 
 async function bootstrap() {
@@ -14,13 +14,22 @@ async function bootstrap() {
     .addTag('api')
     .build();
 
+  /*
   app.enableCors({
-    origin: '*',
+    origin: 'http://manager.itgeurocup.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: false,
+    credentials: true,
   });
-  app.use(cors());
+  */
+  
+  app.enableCors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+
+  });
 
   app.useWebSocketAdapter(new WsAdapter(app));
 
